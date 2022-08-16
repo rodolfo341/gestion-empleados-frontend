@@ -4,19 +4,23 @@ import { Observable } from 'rxjs';
 import { Empleado } from './empleado';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class EmpleadoService {
 
-  //Esta URL obtiene el listado de todos los empleados en el backend
-  private baseURL = "http://localhost:8080/api/v1/empleados";
-  
-  constructor(private httpClient: HttpClient) { }
+    //Esta URL obtiene el listado de todos los empleados en el backend
+    private baseURL = "http://localhost:8080/api/v1/empleados";
 
-  //Este metodo nos sirve para obtener los empleados
-  obtenerListaEmpleados():Observable<Empleado[]>{
-    return this.httpClient.get<Empleado[]>(`${this.baseURL}`);
-  }
+    constructor(private httpClient: HttpClient) { }
+
+    //Este metodo nos sirve para obtener los empleados
+    obtenerListaEmpleados(): Observable<Empleado[]> {
+        return this.httpClient.get<Empleado[]>(`${this.baseURL}`);
+    }
+
+    registrarEmpleado(empleado: Empleado): Observable<Object> {
+        return this.httpClient.post(`${this.baseURL}`, empleado);
+    }
 
 }
 
