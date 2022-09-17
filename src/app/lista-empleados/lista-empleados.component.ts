@@ -30,7 +30,7 @@ export class ListaEmpleadosComponent implements OnInit {
     }
 
     private obtenerEmpleados() {
-        this.empleadoServicio.obtenerListaEmpleados().subscribe(dato => {
+        this.empleadoServicio.obtenerListaDeEmpleados().subscribe(dato => {
             this.empleados = dato;
         });
     }
