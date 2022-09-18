@@ -22,12 +22,14 @@ export class ListaEmpleadosComponent implements OnInit {
         this.router.navigate(['actualizar-empleado',id]);
     }
 
+    
     eliminarEmpleado(id:number){
         this.empleadoServicio.eliminarEmpleado(id).subscribe(dato => {
             console.log(dato);
             this.obtenerEmpleados();
         });
     }
+
 
     private obtenerEmpleados() {
         this.empleadoServicio.obtenerListaDeEmpleados().subscribe(dato => {
